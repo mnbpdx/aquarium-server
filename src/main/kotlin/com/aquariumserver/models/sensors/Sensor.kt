@@ -1,6 +1,7 @@
 package com.aquariumserver.models.sensors
 
 import com.aquariumserver.models.FixMeDateTime
+import kotlinx.serialization.Serializable
 
 interface Sensor {
     val id: Int
@@ -10,11 +11,23 @@ interface Sensor {
 interface Reading {
     val id: Int
     val dateTime: FixMeDateTime
-    val value: ReadingType
+    val location: TestSite
+    val value: ReadingFormat
+    val note: String?
 }
 
-sealed class ReadingType {
-    class Temperature(val value: Float) : ReadingType()
-    class Oxygen(val value: Float) : ReadingType()
-    class Ph(val value: Float) : ReadingType()
+interface TestSite {
+    val id: Int
+}
+
+@Serializable
+sealed class ReadingFormat {
+    @Serializable
+    class Temperature(val value: Float) : ReadingFormat()
+
+    @Serializable
+    class Oxygen(val value: Float) : ReadingFormat()
+
+    @Serializable
+    class Ph(val value: Float) : ReadingFormat()
 }
