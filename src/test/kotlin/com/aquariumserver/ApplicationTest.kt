@@ -1,9 +1,9 @@
-package com.`aquarium-server`
+package com.aquariumserver
 
 import io.ktor.http.*
 import kotlin.test.*
 import io.ktor.server.testing.*
-import com.`aquarium-server`.plugins.*
+import com.aquariumserver.plugins.*
 
 class ApplicationTest {
     @Test

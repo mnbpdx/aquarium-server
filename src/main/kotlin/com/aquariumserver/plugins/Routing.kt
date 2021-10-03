@@ -1,4 +1,4 @@
-package com.`aquarium-server`.plugins
+package com.aquariumserver.plugins
 
 import io.ktor.routing.*
 import io.ktor.application.*
