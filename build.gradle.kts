@@ -1,11 +1,13 @@
-val ktor_version: String by project
-val kotlin_version: String by project
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+val ktorVersion = "1.6.4"
+val kotlinVersion = "1.5.31"
 val logback_version: String by project
 
 plugins {
     application
-    kotlin("jvm") version "1.5.30"
-                id("org.jetbrains.kotlin.plugin.serialization") version "1.5.31"
+    kotlin("jvm") version "1.5.31"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.5.31"
 }
 
 group = "com.example"
@@ -19,10 +21,16 @@ repositories {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-server-core:$ktor_version")
-    implementation("io.ktor:ktor-serialization:$ktor_version")
-    implementation("io.ktor:ktor-server-netty:$ktor_version")
+    implementation("io.ktor:ktor-server-core:$ktorVersion")
+    implementation("io.ktor:ktor-serialization:$ktorVersion")
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
     implementation("ch.qos.logback:logback-classic:$logback_version")
-    testImplementation("io.ktor:ktor-server-tests:$ktor_version")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
+    testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

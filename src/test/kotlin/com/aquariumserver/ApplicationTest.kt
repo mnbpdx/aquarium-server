@@ -1,9 +1,12 @@
 package com.aquariumserver
 
-import io.ktor.http.*
-import kotlin.test.*
-import io.ktor.server.testing.*
-import com.aquariumserver.plugins.*
+import com.aquariumserver.plugins.configureRouting
+import io.ktor.http.HttpMethod
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.testing.handleRequest
+import io.ktor.server.testing.withTestApplication
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
 class ApplicationTest {
     @Test
